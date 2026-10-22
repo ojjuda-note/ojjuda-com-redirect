@@ -7,29 +7,47 @@
   <link rel="apple-touch-icon" href="https://ojjuda.kr/apple-touch-icon.png?v=20261022-agit-logo2">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="오쭈다 아지트">
-<meta property="og:url" content="https://ojjuda.kr/">
-<meta property="og:title" content="오쭈다 아지트 | 오늘 하루 어땠나요? 괜찮았나요">
-<meta property="og:description" content="가볍게 한 판, 다정한 한마디. 오쭈다 아지트의 오락실과 공원에서 만나요.">
+<meta property="og:url" content="https://ojjuda.kr/world.html?place=park">
+<meta property="og:title" content="오쭈다 아지트 · 공원 | 오늘 하루 어땠나요? 괜찮았나요">
+<meta property="og:description" content="카드로 마음을 나누는 오쭈다 아지트 공원. 로그인 없이 먼저 둘러보세요.">
 <meta property="og:image" content="https://ojjuda.kr/og-image.png?v=20261022-agit-logo2">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="오쭈다 아지트 · 웃는 노트 로고">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="오쭈다 아지트 | 오늘 하루 어땠나요? 괜찮았나요">
-<meta name="twitter:description" content="가볍게 한 판, 다정한 한마디. 오쭈다 아지트의 오락실과 공원에서 만나요.">
+<meta name="twitter:title" content="오쭈다 아지트 · 공원 | 오늘 하루 어땠나요? 괜찮았나요">
+<meta name="twitter:description" content="카드로 마음을 나누는 오쭈다 아지트 공원. 로그인 없이 먼저 둘러보세요.">
 <meta name="twitter:image" content="https://ojjuda.kr/og-image.png?v=20261022-agit-logo2">
 <meta name="twitter:image:alt" content="오쭈다 아지트 · 웃는 노트 로고">
 
-  <title>오쭈다 아지트 | 오늘 하루 어땠나요? 괜찮았나요</title>
-  <meta name="description" content="오쭈다 아지트로 이동합니다.">
-  <link rel="canonical" href="https://ojjuda.kr/">
+  <title>오쭈다 아지트 · 공원 | 오늘 하루 어땠나요? 괜찮았나요</title>
+  <meta name="description" content="오쭈다 아지트 공원으로 이동합니다.">
+  <link rel="canonical" href="https://ojjuda.kr/world.html?place=park">
   <script>
-    location.replace('https://ojjuda.kr/' + location.search + location.hash);
+    (() => {
+      const incoming = new URL(location.href);
+      const target = new URL('https://ojjuda.kr/');
+      target.pathname = incoming.pathname;
+      target.search = incoming.search;
+      target.hash = incoming.hash;
+      if (['/', '/index.html', '/world', '/world.html'].includes(incoming.pathname)) {
+        const hash = new URLSearchParams(incoming.hash.slice(1));
+        const accountKeys = ['auth', 'next', 'reset', 'code', 'token', 'token_hash', 'type', 'access_token', 'refresh_token', 'error', 'error_code', 'error_description'];
+        const accountEntry = accountKeys.some(key => incoming.searchParams.has(key) || hash.has(key));
+        target.pathname = accountEntry ? '/' : '/world.html';
+        if (accountEntry) {
+          if (!target.searchParams.has('next')) target.searchParams.set('next', 'note');
+        } else if (!target.searchParams.has('tab') && !target.searchParams.has('place')) {
+          target.searchParams.set('place', 'park');
+        }
+      }
+      location.replace(target.href);
+    })();
   </script>
-  <meta http-equiv="refresh" content="0;url=https://ojjuda.kr/">
+  <meta http-equiv="refresh" content="0;url=https://ojjuda.kr/world.html?place=park">
 </head>
 <body>
-  <p>오쭈다 아지트로 이동합니다. <a href="https://ojjuda.kr/">바로 들어가기</a></p>
+  <p>오쭈다 아지트 공원으로 이동합니다. <a href="https://ojjuda.kr/world.html?place=park">바로 들어가기</a></p>
 </body>
 </html>
