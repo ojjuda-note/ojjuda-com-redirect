@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="referrer" content="no-referrer">
+  <meta name="robots" content="noindex,follow">
+  <title>아지트로 이동 중 | 오쭈다</title>
+  <meta name="description" content="설치 앱이 별도 입장 대문 없이 아지트 홈을 엽니다.">
+  <link rel="canonical" href="https://ojjuda.kr/world.html?tab=hub">
+  <script>
+    (() => {
+      // Installed v1 Android apps open this legacy .com entry. Do not show
+      // another "enter" landing: take the user straight to the real service.
+      const url = new URL('https://ojjuda.kr/world.html?tab=hub');
+      const incoming = new URL(location.href);
+      const refs = incoming.searchParams.getAll('ref');
+      if (refs.length === 1 && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(refs[0])) {
+        url.searchParams.set('ref', refs[0].toLowerCase());
+      }
+      // Do not transfer arbitrary redirects, login codes or secret fragments.
+      location.replace(url.href);
+    })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0;url=https://ojjuda.kr/world.html?tab=hub"></noscript>
+</head>
+<body>
+  <p>아지트로 이동합니다. <a href="https://ojjuda.kr/world.html?tab=hub">서비스 바로 열기</a></p>
+</body>
+</html>
